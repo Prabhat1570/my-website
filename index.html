@@ -8,9 +8,7 @@
 
   <title>Prabhatkumar Yadav | AI & Technology</title>
 
-  <meta name="description"
-    content="Explore Prabhatkumar Yadav's professional journey, AI projects, skills and interests.">
-
+  <meta name="description" content="Explore Prabhatkumar Yadav's professional journey, AI projects, skills and interests.">
   <meta name="theme-color" content="#030407">
 
   <style>
@@ -20,7 +18,6 @@
       --lime: #B4FF24;
       --white: #F5F7FA;
       --muted: #9299A8;
-      --card: #0B101A;
       --border: rgba(180, 255, 36, 0.13);
     }
 
@@ -55,7 +52,7 @@
       z-index: 100;
       background: rgba(3, 4, 7, 0.92);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(180, 255, 36, 0.12);
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
@@ -64,7 +61,8 @@
       letter-spacing: -1px;
     }
 
-    .logo span {
+    .logo span,
+    footer span {
       color: var(--lime);
     }
 
@@ -77,7 +75,7 @@
       color: #B9C0CC;
       text-decoration: none;
       font-size: 13px;
-      transition: .3s;
+      transition: color .3s;
     }
 
     nav a:hover {
@@ -89,64 +87,44 @@
     .hero {
       min-height: 88vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 100px 10%;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 4%;
+      padding: 75px 9%;
       position: relative;
       isolation: isolate;
       overflow: hidden;
     }
-
-    /* FULL-WIDTH CAR BACKGROUND */
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -2;
-
       background:
-        linear-gradient(
-          90deg,
-          rgba(3, 4, 7, 0.94) 0%,
-          rgba(3, 4, 7, 0.76) 40%,
-          rgba(3, 4, 7, 0.28) 100%
-        ),
-        linear-gradient(
-          0deg,
-          rgba(3, 4, 7, 0.50),
-          rgba(3, 4, 7, 0.10)
-        ),
-        url("images/car-profile.png");
-
-      background-size: cover;
-
-      /* Adjust the visible car composition */
-      background-position: 65% 60%;
-
-      background-repeat: no-repeat;
+        linear-gradient(90deg,
+          rgba(3, 4, 7, .94) 0%,
+          rgba(3, 4, 7, .76) 40%,
+          rgba(3, 4, 7, .28) 100%),
+        linear-gradient(0deg,
+          rgba(3, 4, 7, .50),
+          rgba(3, 4, 7, .10)),
+        url("images/car-profile.png") 65% 60% / cover no-repeat;
     }
-
-    /* AMBIENT BLUE LIGHT */
 
     .hero::after {
       content: "";
       position: absolute;
       width: 600px;
       height: 600px;
-      border-radius: 50%;
       right: -180px;
       top: 0;
       z-index: -1;
-
-      background: radial-gradient(
-        circle,
-        rgba(21, 88, 201, 0.25) 0%,
-        rgba(21, 88, 201, 0.08) 40%,
-        transparent 70%
-      );
-
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(21, 88, 201, .25),
+        rgba(21, 88, 201, .08) 40%,
+        transparent 70%);
       filter: blur(30px);
       animation: glow 7s ease-in-out infinite alternate;
       pointer-events: none;
@@ -164,7 +142,7 @@
       height: 250px;
       right: 16%;
       bottom: 8%;
-      background: rgba(21, 88, 201, 0.15);
+      background: rgba(21, 88, 201, .15);
       filter: blur(65px);
       animation: float 8s ease-in-out infinite;
     }
@@ -174,109 +152,35 @@
       height: 90px;
       right: 20%;
       top: 25%;
-      background: rgba(180, 255, 36, 0.12);
+      background: rgba(180, 255, 36, .12);
       filter: blur(45px);
       animation: float 6s ease-in-out infinite alternate;
     }
 
-    /* PROFILE PHOTO — TOP-RIGHT, NATURAL FADE */
-
-    
-.profile-photo {
-    position: absolute;
-    top: 20px;
-    right: 3%;
-    width: 280px;
-    height: 280px;
-    margin: 0;
-    z-index: 3;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 3px solid #B4FF24;
-    box-shadow: 0 0 25px rgba(180, 255, 36, 0.2);
-}
-
-.profile-photo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-    -webkit-mask-image: none;
-    mask-image: none;
-}
-
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        black 0%,
-        black 62%,
-        rgba(0, 0, 0, 0.75) 76%,
-        transparent 100%
-      );
-
-      mask-image: linear-gradient(
-        to bottom,
-        black 0%,
-        black 62%,
-        rgba(0, 0, 0, 0.75) 76%,
-        transparent 100%
-      );
-    }
-
     /* HERO CONTENT */
 
-    .hero > :not(.orb):not(.profile-photo) {
+    .hero-content {
+      flex: 1 1 62%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
-
-    .hero h1 {
-      max-width: 78%;
-    }
-
-    .hero h2,
-    .hero p,
-    .hero .buttons {
-      max-width: 72%;
-    }
-
-    /* ANIMATIONS */
-
-    @keyframes glow {
-      from {
-        transform: scale(.9);
-        opacity: .6;
-      }
-
-      to {
-        transform: scale(1.15);
-        opacity: 1;
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-25px);
-      }
-    }
-
-    /* HERO TEXT */
 
     .tag {
-      display: inline-block;
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
       padding: 7px 16px;
+      margin-bottom: 25px;
       color: var(--lime);
-      background: rgba(180, 255, 36, 0.06);
-      border: 1px solid rgba(180, 255, 36, 0.3);
+      background: rgba(180, 255, 36, .06);
+      border: 1px solid rgba(180, 255, 36, .3);
       border-radius: 30px;
       font-size: 12px;
       letter-spacing: 1px;
-      margin-bottom: 25px;
     }
 
     h1 {
@@ -293,14 +197,59 @@
     .hero h2 {
       color: #A9BDE1;
       font-size: clamp(19px, 3vw, 26px);
-      margin-bottom: 15px;
       font-weight: 500;
+      margin-bottom: 15px;
     }
 
     .hero p {
       max-width: 620px;
       color: #C1C6D0;
       font-size: 16px;
+    }
+
+    /* PROFILE IMAGE */
+
+    .profile-photo {
+      flex: 0 0 34%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      border: none;
+      border-radius: 0;
+
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 70%,
+        rgba(0, 0, 0, .82) 82%,
+        rgba(0, 0, 0, .38) 93%,
+        transparent 100%
+      );
+
+      mask-image: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 70%,
+        rgba(0, 0, 0, .82) 82%,
+        rgba(0, 0, 0, .38) 93%,
+        transparent 100%
+      );
+
+      opacity: 0;
+      filter: brightness(.65);
+      animation: profileReveal 1.2s ease-out .5s forwards;
     }
 
     /* BUTTONS */
@@ -319,14 +268,14 @@
       background: var(--lime);
       color: var(--black);
       text-decoration: none;
-      font-weight: 800;
       font-size: 13px;
+      font-weight: 800;
       transition: .3s;
     }
 
     .btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 25px rgba(180, 255, 36, 0.25);
+      box-shadow: 0 0 25px rgba(180, 255, 36, .25);
     }
 
     .btn.secondary {
@@ -356,8 +305,8 @@
 
     h2.section-title {
       font-size: 36px;
-      margin-bottom: 15px;
       letter-spacing: -1px;
+      margin-bottom: 15px;
     }
 
     .subtitle {
@@ -387,8 +336,8 @@
 
     .skill {
       padding: 12px 20px;
-      background: rgba(21, 88, 201, 0.12);
-      border: 1px solid rgba(21, 88, 201, 0.6);
+      background: rgba(21, 88, 201, .12);
+      border: 1px solid rgba(21, 88, 201, .6);
       color: #BBD2FF;
       border-radius: 7px;
       font-size: 14px;
@@ -446,8 +395,8 @@
 
     .card h3 {
       color: var(--lime);
-      margin-bottom: 12px;
       font-size: 19px;
+      margin-bottom: 12px;
     }
 
     .card p {
@@ -460,24 +409,23 @@
     .contact {
       text-align: center;
       position: relative;
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(21, 88, 201, 0.14),
-          transparent 65%
-        );
+      background: radial-gradient(
+        ellipse at center,
+        rgba(21, 88, 201, .14),
+        transparent 65%
+      );
     }
 
     .contact > p {
-      color: var(--muted);
       max-width: 650px;
+      color: var(--muted);
       margin: 15px auto;
     }
 
     .contact > p a {
       color: var(--lime);
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
     .contact > p a:hover {
@@ -498,8 +446,8 @@
       gap: 6px;
       min-width: 270px;
       padding: 22px;
-      border: 1px solid rgba(21, 88, 201, 0.55);
-      background: rgba(11, 16, 26, 0.8);
+      border: 1px solid rgba(21, 88, 201, .55);
+      background: rgba(11, 16, 26, .8);
       border-radius: 10px;
     }
 
@@ -528,35 +476,84 @@
       text-align: center;
       padding: 25px;
       color: #737E91;
-      border-top: 1px solid rgba(180, 255, 36, 0.12);
+      border-top: 1px solid var(--border);
       font-size: 13px;
     }
 
-    footer span {
-      color: var(--lime);
+    /* ANIMATIONS */
+
+    @keyframes glow {
+      from {
+        transform: scale(.9);
+        opacity: .6;
+      }
+
+      to {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-25px);
+      }
+    }
+
+    @keyframes profileReveal {
+      from {
+        opacity: 0;
+        filter: brightness(.65);
+      }
+
+      to {
+        opacity: 1;
+        filter: brightness(1);
+      }
     }
 
     /* TABLET */
 
-    @media (max-width: 768px) {
-
+    @media (max-width: 900px) {
       .hero {
         min-height: 90vh;
-        padding: 280px 7% 70px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 35px 7% 65px;
       }
 
       .profile-photo {
-        width: 170px;
-        height: 280px;
-        top: 5px;
-        right: 1%;
+        order: -1;
+        flex: none;
+        width: 220px;
+        height: 245px;
+        margin: 0 auto;
       }
 
-      .hero h1,
-      .hero h2,
-      .hero p,
+      .profile-photo img {
+        object-position: center bottom;
+      }
+
+      .hero-content {
+        order: 0;
+        width: 100%;
+        flex: none;
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero p {
+        margin: 0 auto;
+      }
+
       .hero .buttons {
-        max-width: 100%;
+        justify-content: center;
       }
 
       .hero::before {
@@ -567,7 +564,6 @@
     /* MOBILE */
 
     @media (max-width: 650px) {
-
       nav {
         padding: 15px 5%;
         flex-wrap: wrap;
@@ -585,19 +581,35 @@
 
       .hero {
         min-height: 85vh;
-        padding: 250px 7% 65px;
+        padding: 25px 7% 60px;
+        gap: 8px;
       }
 
       .profile-photo {
-        width: 155px;
-        height: 250px;
-        top: 5px;
-        right: 1%;
+        width: 185px;
+        height: 205px;
+      }
+
+      .hero .tag {
+        margin-bottom: 20px;
+        white-space: normal;
       }
 
       h1 {
         font-size: clamp(42px, 11vw, 60px);
         letter-spacing: -2px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero .buttons {
+        gap: 12px;
       }
 
       section:not(.hero) {
@@ -628,6 +640,11 @@
         animation: none !important;
         transition: none !important;
       }
+
+      .profile-photo img {
+        opacity: 1;
+        filter: brightness(1);
+      }
     }
 
   </style>
@@ -657,26 +674,31 @@
     <div class="orb orb-blue"></div>
     <div class="orb orb-lime"></div>
 
-    <span class="tag">
-      ✦ WELCOME TO MY DIGITAL SPACE
-    </span>
+    <div class="hero-content">
 
-    <h1>
-      Hi, I'm <span class="gradient">Prabhatkumar.</span>
-    </h1>
+      <span class="tag">
+        ✦ WELCOME TO MY DIGITAL SPACE
+      </span>
 
-    <h2>
-      AI / Technology Enthusiast
-    </h2>
+      <h1>
+        Hi, I'm <span class="gradient">Prabhatkumar.</span>
+      </h1>
 
-    <p>
-      Exploring the world of Artificial Intelligence,
-      Python, and Automation. I'm passionate about
-      technology, innovation, and building intelligent
-      solutions that create meaningful impact.
-    </p>
+      <h2>AI / Technology Enthusiast</h2>
 
-    <!-- TRANSPARENT PROFILE PHOTO -->
+      <p>
+        Exploring the world of Artificial Intelligence,
+        Python, and Automation. I'm passionate about
+        technology, innovation, and building intelligent
+        solutions that create meaningful impact.
+      </p>
+
+      <div class="buttons">
+        <a class="btn" href="#projects">Explore My Work ↗</a>
+        <a class="btn secondary" href="#contact">Let's Connect</a>
+      </div>
+
+    </div>
 
     <div class="profile-photo">
       <img
@@ -684,26 +706,16 @@
         alt="Portrait of Prabhatkumar Yadav">
     </div>
 
-    <div class="buttons">
-      <a class="btn" href="#projects">
-        Explore My Work ↗
-      </a>
-
-      <a class="btn secondary" href="#contact">
-        Let's Connect
-      </a>
-    </div>
-
   </section>
 
   <!-- ABOUT SECTION -->
 
-  <section id="about" class="about">
+  <section id="about">
 
     <div class="section-label">01 / ABOUT ME</div>
 
     <h2 class="section-title">
-      A Little About Me<span style="color:#B4FF24">.</span>
+      A Little About Me<span class="gradient">.</span>
     </h2>
 
     <div class="about-content">
@@ -742,7 +754,7 @@
     <div class="section-label">02 / WHAT I EXPLORE</div>
 
     <h2 class="section-title">
-      Skills & Interests<span style="color:#B4FF24">.</span>
+      Skills & Interests<span class="gradient">.</span>
     </h2>
 
     <p class="subtitle">
@@ -767,7 +779,7 @@
     <div class="section-label">03 / SELECTED WORK</div>
 
     <h2 class="section-title">
-      My Projects<span style="color:#B4FF24">.</span>
+      My Projects<span class="gradient">.</span>
     </h2>
 
     <p class="subtitle">
@@ -802,7 +814,7 @@
     <div class="section-label">04 / GET IN TOUCH</div>
 
     <h2 class="section-title">
-      Let's Connect<span style="color:#B4FF24">.</span>
+      Let's Connect<span class="gradient">.</span>
     </h2>
 
     <p>
@@ -825,36 +837,22 @@
     <div class="contact-details">
 
       <div class="contact-item">
-
         <span class="contact-label">Email Address</span>
-
-        <a href="mailto:yadavprabhat157@gmail.com">
-          yadavprabhat157@gmail.com
+        <a href="mailto:yadavprabhat@gmail.com">
+          yadavprabhat@gmail.com
         </a>
-
       </div>
 
       <div class="contact-item">
-
         <span class="contact-label">Phone Number</span>
-
-        <!-- Replace this placeholder with your confirmed public number -->
-
         <a href="tel:8355985177">
           +91 8355985177
         </a>
-
       </div>
 
     </div>
 
   </section>
-
-  <!-- DIFY AI INTEGRATION PLACEHOLDER -->
-
-  <!-- Add the official Dify website embed code here
-       when your AI agent is ready.
-       Never expose private API keys in frontend code. -->
 
   <!-- FOOTER -->
 
@@ -870,5 +868,4 @@
   </script>
 
 </body>
-
 </html>
